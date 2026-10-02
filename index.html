@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wi-Fi Poster Generator</title>
+<link rel="stylesheet" href="style.css">
+<style id="page-size">@page { size: A4 portrait; margin: 0; }</style>
+</head>
+<body>
+<aside class="panel">
+  <h1>Wi-Fi постер</h1>
+
+  <fieldset>
+    <legend>Сеть</legend>
+    <label>SSID <input id="ssid" autocomplete="off" placeholder="Cafe_Guest"></label>
+    <label>Пароль <input id="password" autocomplete="off"></label>
+    <label>Шифрование
+      <select id="security">
+        <option value="WPA">WPA/WPA2/WPA3</option>
+        <option value="WEP">WEP</option>
+        <option value="nopass">Без пароля</option>
+      </select>
+    </label>
+    <label class="check"><input type="checkbox" id="hidden"> Скрытая сеть</label>
+    <label class="check"><input type="checkbox" id="showPassword" checked> Печатать пароль текстом</label>
+    <p class="warn" id="ssidWarn" hidden></p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Текст</legend>
+    <label>Заголовок
+      <select id="headline">
+        <option value="wifi">Wi-Fi</option>
+        <option value="free">Бесплатный Wi-Fi</option>
+        <option value="guest">Гостевой Wi-Fi</option>
+      </select>
+    </label>
+    <div class="langs">
+      Языки (первый — крупно):
+      <span id="langList"></span>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Дизайн</legend>
+    <div class="designs" id="designs"></div>
+    <label>Акцентный цвет <input type="color" id="accent" value="#0a7cff"></label>
+    <label>Формат
+      <select id="size">
+        <option value="A4">A4</option>
+        <option value="A5">A5</option>
+      </select>
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Логотипы</legend>
+    <label>Логотип клиента <input type="file" id="clientLogo" accept="image/*"></label>
+    <button type="button" class="link" id="clientLogoClear" hidden>убрать логотип клиента</button>
+    <label>Мой логотип <small>(запоминается)</small> <input type="file" id="myLogo" accept="image/*"></label>
+    <button type="button" class="link" id="myLogoClear" hidden>убрать мой логотип</button>
+    <label>Подпись внизу <small>(запоминается)</small> <input id="footerText" placeholder="Wi-Fi by NetPro"></label>
+  </fieldset>
+
+  <button type="button" class="primary" id="print">Печать / PDF</button>
+  <p class="hint">В диалоге печати: поля «Нет», масштаб 100%, включить «Фоновая графика».</p>
+</aside>
+
+<main class="stage" id="stage">
+  <div class="scaler" id="scaler">
+    <article class="poster" id="poster"></article>
+  </div>
+</main>
+
+<script src="vendor/qrcode.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
